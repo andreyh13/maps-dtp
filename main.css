@@ -1,0 +1,29 @@
+html, body, #map-canvas {
+    height: 100%;
+    margin: 0px;
+    padding: 0px
+}
+
+#panel {
+    position: absolute;
+    top: 5px;
+    left: 80px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    width: 400px;
+}
+
+#panel label {
+    width: 140px;
+    float: left;
+}
+
+#panel .input-container {
+    margin: 4px 0;
+} 
+
+#address {
+    width: 222px;
+}
