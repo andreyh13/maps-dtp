@@ -10,6 +10,8 @@
       };
       map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+
+
       var input = document.getElementById('address');
       var autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -19,16 +21,31 @@
           return;
         }
 
-        m_location = place.geometry.location;   
+        m_location = place.geometry.location;
         // If the place has a geometry, then present it on a map.
         if (place.geometry.viewport) {
           map.fitBounds(place.geometry.viewport);
         } else {
           map.setCenter(place.geometry.location);
         }
-      });    
+      });
+    }
 
+    function buildPoly () {
+        var speed = parseInt(document.getElementById("speed").value);
+        var time = parseFloat(document.getElementById("time").value);
+        var quality = document.getElementById("quality").value;
+
+        if (map) {
+            dtPoly = com.xomena.dtPolygon.getInstance(map);
+            dtPoly.setOptions({
+                quality: quality
+            });
+            dtPoly.buildPolygon(m_location, speed, time);
+        }
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(document.getElementById("searchbtn"), 'click', buildPoly);
+
 })();
