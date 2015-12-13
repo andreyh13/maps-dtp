@@ -38,8 +38,11 @@
 
         if (map) {
             dtPoly = com.xomena.dtPolygon.getInstance(map);
+            dtPoly.clearMap();
             dtPoly.setOptions({
-                quality: quality
+                quality: quality,
+                show_circle: true,
+                show_circle_points: true
             });
             dtPoly.buildPolygon(m_location, speed, time);
         }
