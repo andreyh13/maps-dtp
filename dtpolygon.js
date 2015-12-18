@@ -47,20 +47,26 @@ window.com.xomena.dtPolygon = (function () {
             visible: m_opt.show_circle
         });
 
-        var head_step;
+        var head_step, m_dist;
         switch (m_opt.quality) {
             case "low":
-              head_step = 10;
+              m_dist = 500;
               break;
             case "middle":
-              head_step = 5;
+              m_dist = 250;
               break;
             case "hight":
-              head_step = 2;
+              m_dist = 100;
               break;
             default:
-              head_step = 5;
+              m_dist = 250;
               break;
+        }
+
+        var num_p = Math.round(2 * Math.PI * m_radius / m_dist);
+        head_step = Math.round(360.0 / num_p);
+        if (head_step < 1) {
+            head_step = 1;
         }
 
         var heading = 0, points = [];
